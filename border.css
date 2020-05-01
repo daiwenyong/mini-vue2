@@ -1,0 +1,57 @@
+.border{
+    position: relative;
+}
+.border::after {
+    content: '';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    /* -webkit-transform: scale(0.5);
+    transform: scale(0.5); */
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+/* -moz：代表firefox浏览器私有属性
+
+-ms：代表IE浏览器私有属性
+
+-webkit：代表chrome、safari私有属性
+
+-o：代表opera私有属性 */
+
+@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5){
+    .border::after {
+        -webkit-transform: scale(0.7);
+        -moz-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        -o-transform: scale(0.7);
+        transform: scale(0.7);
+      }
+  }
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2){
+    .border::after {
+        -webkit-transform: scale(0.5);
+        -moz-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        -o-transform: scale(0.5);
+        transform: scale(0.5);
+      }
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3){
+    .border::after {
+        -webkit-transform: scale(0.33333);
+        -moz-transform: scale(0.33333);
+        -ms-transform: scale(0.33333);
+        -o-transform: scale(0.33333);
+        transform: scale(0.33333);
+      }
+  }
