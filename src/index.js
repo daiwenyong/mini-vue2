@@ -29,7 +29,6 @@ export default Vue
 // let oldVnode = rend.call(vm)
 // document.body.appendChild(createElm(oldVnode))
 //
-// // todo  <div >compiler会生成一个 > child
 // let newTemplate = `<div>
 //     <li key="A">A1</li>
 //     <li key="B">B1</li>
