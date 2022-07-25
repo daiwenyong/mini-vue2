@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+hello{{name}}--{{fullName}}{{fullName}}<span></span>
+-->
+<div id="app" style="color: red;font-size:20px">
+        {{fullName}}<my-button></my-button>
+</div>
+<div class="box"></div>
+<script src="dist/index.js"></script>
+<script>
+    // Vue.mixin({
+    //     data(){
+    //         return{
+    //             a:1,
+    //             b:2
+    //         }
+    //     },
+    //     created(){
+    //         console.log("-> created");
+    //         console.log(this.a,this.b)
+    //     }
+    // })
+    Vue.component('my-button',{
+        template: '<button>button</button>',
+        // created(){
+        //     console.log('button created')
+        // },
+        // beforeMount(){
+        //     console.log('button beforeMount')
+        // },
+        // mounted() {
+        //     console.log('button mounted')
+        // },
+    })
+
+    // const Sub = Vue.extend({
+    //     template:'<div>extend<my-button></my-button></div>',
+    //     components:{
+    //         'my-button':{
+    //             template: '<button>sub-button</button>>'
+    //         }
+    //     }
+    // })
+    // console.log('Sub',Object.getOwnPropertyDescriptors(Sub))
+    // const sub = new Sub().$mount('.box')
+    // console.log('sub',sub)
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                //arr: [[[6],1,2,3]],
+                // a: { b: 1 },
+                // name: 'old name',
+                // b:2,
+                firstName:'d',
+                lastName:'wy'
+            }
+        },
+        // created() {
+        //     console.log('app created')
+        // },
+        // beforeMount(){
+        //     console.log('app beforeMount')
+        // },
+        // mounted() {
+        //     console.log('app mounted')
+        // },
+        watch:{
+            // name:{
+            //     handler(newV,val){
+            //         console.log('---------name update',newV,val)
+            //     },
+            //     immediate:true
+            // },
+            // 'a.b'(newV,val){
+            //     console.log('a.b update',newV,val)
+            // }
+        },
+        computed: {
+            fullName:{
+                get(){
+                    return this.firstName + this.lastName
+                },
+                set(){
+
+                }
+            }
+        }
+    })
+
+    // vm.$mount('#app')
+    // setTimeout(() => {
+    //     //vm.arr = [987]
+    //     //vm.arr.push(4)
+    //     //vm.arr[0][0].push(66)
+    //
+    //     // vm.name = 'new name'
+    //     // vm.a.b = 2
+    //      vm.firstName = 'dai-'
+    //     //console.log(vm)
+    // }, 1000)
+    // setTimeout(()=>{
+    //     vm.lastName = 'wenyong'
+    // },2000)
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">{{msg}}</div>
+<script src="dist/index.js"></script>
+<script>
+    Vue.mixin({
+        data(){
+            return{
+                a:1,
+                b:2
+            }
+        },
+        created(){
+            console.log("-> created");
+            console.log(this.a,this.b)
+        }
+    })
+    Vue.component('my-button',{
+        template: '<button>button</button>>'
+    })
+
+    const Sub = Vue.extend({
+        template:'<div>extend<my-button></my-button></div>',
+        components:{
+            'my-button':{
+                template: '<button>sub-button</button>>'
+            }
+        }
+    })
+    console.log('Sub',Object.getOwnPropertyDescriptors(Sub))
+    const sub = new Sub().$mount('.box')
+    console.log('sub',sub)
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                //arr: [[[6],1,2,3]],
+                // a: { b: 1 },
+                // name: 'old name',
+                // b:2,
+                firstName:'d',
+                lastName:'wy'
+            }
+        },
+        created() {
+            console.log('hello my vue')
+        },
+        watch:{
+            // name:{
+            //     handler(newV,val){
+            //         console.log('---------name update',newV,val)
+            //     },
+            //     immediate:true
+            // },
+            // 'a.b'(newV,val){
+            //     console.log('a.b update',newV,val)
+            // }
+        },
+        computed: {
+            fullName:{
+                get(){
+                    return this.firstName + this.lastName
+                },
+                set(){
+
+                }
+            }
+        }
+    })
+    setTimeout(()=>{
+        vm.msg = '123'
+    },1000)
+</script>
+</body>
+</html>
